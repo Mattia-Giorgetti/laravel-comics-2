@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Guest\ResourceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
+Route::resource('comics', ResourceController::class);
