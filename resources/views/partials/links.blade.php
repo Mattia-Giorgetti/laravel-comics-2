@@ -47,7 +47,7 @@
             </div>
 
         </div>
-        <div class="right_bg_img">
+        <div class="right_bg_img d-none d-lg-block">
             <img src="{{ Vite::asset('resources/img/dc-logo-bg.png') }}" alt="">
         </div>
     </div>

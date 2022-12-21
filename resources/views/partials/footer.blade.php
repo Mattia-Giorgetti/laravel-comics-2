@@ -5,7 +5,7 @@
         </div>
         <div class="foot_right">
             <span>
-                <a href="#">Follow Us</a>
+                <a class="d-none d-md-block" href="#">Follow Us</a>
             </span>
             <img src="{{ Vite::asset('resources/img/footer-facebook.png') }}" alt="fb logo" />
             <img src="{{ Vite::asset('resources/img/footer-twitter.png') }}" alt="twitter logo" />
