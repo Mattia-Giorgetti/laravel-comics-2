@@ -101,12 +101,6 @@ return [
             "series" => "Batman: Three Jokers",
             "sale_date" => "2020-08-25",
             "type" => "comic book",
-            "artists" => [
-                "Jason Fabok"
-            ],
-            "writers" => [
-                "Geoff Johns"
-            ],
         ],
         [
             "title" => "Batman: White Knight Presents: Harley Quinn #1",

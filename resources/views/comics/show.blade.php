@@ -13,15 +13,32 @@
                     </div>
                     <div class="comic_description">
                         <p class="py-4">{{ $comic->description }}</p>
-                        <button>
-                            <a class="text-decoration-none text-white d-block" href="{{ route('comics.index') }}">Back to
-                                Comics</a>
-                        </button>
+                        <div class="show_btn_section d-flex justify-content-flex-start gap-5">
+                            <button>
+                                <a class="text-decoration-none text-white d-block" href="{{ route('comics.index') }}">
+                                    &lArr; Back
+                                    to Comics</a>
+                            </button>
+                            <button>
+                                <a class="text-decoration-none text-white d-block"
+                                    href="{{ route('comics.edit', $comic->id) }}">Edit
+                                    this
+                                    Comic</a>
+                            </button>
+
+                            {{-- SERVE UN FORM PER FARE IL DELETE, ATTRAVERSO @METHOD('DELETE') --}}
+                            <form action="{{ route('comics.destroy', $comic->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+
+                                <button class="show_delete_btn" type="submit">Delete This Comic</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="col-4">
                     <div>
-                        <img src="{{ $comic->thumb }}" alt="{{ $comic->series }}">
+                        <img class="img-fluid" src="{{ $comic->thumb }}" alt="{{ $comic->series }}">
                     </div>
                 </div>
             </div>

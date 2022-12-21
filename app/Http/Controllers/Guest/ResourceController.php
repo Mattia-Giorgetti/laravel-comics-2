@@ -38,15 +38,19 @@ class ResourceController extends Controller
     public function store(Request $request)
     {
         $formData = $request->all();
-        $newComic = new Comic();
-        $newComic->title = $formData['title'];
-        $newComic->description = $formData['description'];
-        $newComic->thumb = $formData['thumb'];
-        $newComic->price = $formData['price'];
-        $newComic->series = $formData['series'];
-        $newComic->sale_date = $formData['sale_date'];
-        $newComic->type = $formData['type'];
-        $newComic->save();
+
+        // SI PUÒ USARE FILLABLE
+
+        // $newComic = new Comic();
+        // $newComic->title = $formData['title'];
+        // $newComic->description = $formData['description'];
+        // $newComic->thumb = $formData['thumb'];
+        // $newComic->price = $formData['price'];
+        // $newComic->series = $formData['series'];
+        // $newComic->sale_date = $formData['sale_date'];
+        // $newComic->type = $formData['type'];
+        // $newComic->save();
+        $newComic = Comic::create($formData);
         return redirect()->route('comics.show', ['comic' => $newComic->id]);
     }
 
@@ -56,9 +60,9 @@ class ResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Comic $comic)
     {
-        $comic = Comic::find($id);
+        // $comic = Comic::findOrFail($id);
         return view('comics.show', compact('comic'));
     }
 
@@ -70,7 +74,8 @@ class ResourceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic = Comic::findOrFail($id);
+        return view('comics.edit', compact('comic'));
     }
 
     /**
@@ -82,7 +87,25 @@ class ResourceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Non si usa il new perchè non è un nuono comic, ma quello recuperato da create
+
+        $comic = Comic::find($id);
+
+        $formData = $request->all();
+
+        $comic->title = $formData['title'];
+        $comic->description = $formData['description'];
+        $comic->thumb = $formData['thumb'];
+        $comic->price = $formData['price'];
+        $comic->series = $formData['series'];
+        $comic->sale_date = $formData['sale_date'];
+        $comic->type = $formData['type'];
+
+        $comic->update();
+
+        return redirect()->route('comics.index');
+
+
     }
 
     /**
@@ -91,8 +114,9 @@ class ResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+        return redirect()->route('comics.index');
     }
 }

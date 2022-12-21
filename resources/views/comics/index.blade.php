@@ -6,7 +6,8 @@
             <div class="row px-4">
                 @foreach ($comics as $comic)
                     <div class="col-2 mb-5">
-                        <div class="img_wrapper"><img src="{{ $comic['thumb'] }}" alt="{{ $comic['title'] }}"></div>
+                        <div class="img_wrapper"><img class="img-fluid" src="{{ $comic['thumb'] }}" alt="{{ $comic['title'] }}">
+                        </div>
                         <h4>
                             <a href="{{ route('comics.show', $comic->id) }}">{{ $comic['series'] }}</a>
                         </h4>
