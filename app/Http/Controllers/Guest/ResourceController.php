@@ -103,9 +103,7 @@ class ResourceController extends Controller
 
         $comic->update();
 
-        return redirect()->route('comics.index');
-
-
+        return redirect()->route('comics.show', compact('comic'));
     }
 
     /**

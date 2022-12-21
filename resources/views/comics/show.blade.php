@@ -31,7 +31,29 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button class="show_delete_btn" type="submit">Delete This Comic</button>
+                                {{-- BUTTON SEMPLICE PER IL DELETE --}}
+                                {{-- <button onclick="return confirm('Are you sure you want to delete this Comic?')"
+                                    class="show_delete_btn" type="submit">Delete This Comic</button> --}}
+
+                                {{-- MODAL PER IL DELETE --}}
+                                <button type="button" class="show_delete_btn" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Delete This Comic
+                                </button>
+                                <div class="modal fade centered" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content p-2 bg-black">
+                                            <div class="modal-body">
+                                                <h4 class="text-white">Are you sure you want to delete this comic?</h4>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" data-bs-dismiss="modal">No</button>
+                                                <button type="submit" class="show_delete_btn">Yes, delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
